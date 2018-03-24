@@ -1,0 +1,223 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: bold;
+  text-align: center;
+}
+
+a {
+  text-decoration:  none;
+  color: white;
+  font-family: 'Open Sans', sans-serif;
+}
+
+header.App-header {
+  background-color: #AB2A19;
+  display: flex;
+}
+
+header.shelf-header {
+  background-color:  #D34735;
+  display: flex;
+}
+
+header.bin-header {
+  background-color: #ED6B5A;
+  display: flex;
+}
+
+header h1 {
+  padding-left:  15px;
+  padding-right:  15px;
+  color: white;
+  font-family: 'Open Sans', sans-serif;
+  padding-top: 4px;
+  padding-bottom:  15px;
+}
+
+
+.shelf-button {
+  background-color: #D34735;
+  color: white;
+  font-family: 'Open Sans', sans-serif;
+  width: 60%;
+  margin: auto;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+h1.shelf-button-title {
+  padding-top: 15px;
+  padding-bottom:  15px;
+}
+
+.unfilled-bin-button {
+  color: black;
+  background-color: #FFB8AF;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: bold;
+  width: 60%;
+  margin: auto;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.bin-button {
+  background-color:  #ED6B5A;
+  width: 60%;
+  margin: auto;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+h1.bin-button-title {
+  padding-top:  15px;
+  padding-bottom: 15px;
+}
+
+img.logo {
+  max-width: 68px;
+  max-height: 68px;
+  padding-top:  26px;
+  padding-left: 240px;
+  padding-bottom: 26px;
+}
+
+h1.App-title {
+  color: white;
+  font-family: 'Open Sans', sans-serif;
+  padding-top:  17px;
+  padding-left: 26px;
+}
+
+div > h1 {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.shelf-logo-div {
+  background-color:  #AB2A19;
+  padding-left:  35px;
+  padding-right: 35px;
+  padding-top:  15px;
+  padding-bottom:  15px;
+  cursor: pointer;
+}
+
+h1.shelf-title {
+  color: white;
+  font-family: 'Open Sans', sans-serif;
+  padding-left: 15px;
+  padding-top: 4px;
+}
+
+.bin-logo-div {
+  background-color:  #AB2A19;
+  padding-left:  35px;
+  padding-right: 35px;
+  padding-top:  15px;
+  padding-bottom:  15px;
+  cursor: pointer;
+}
+
+.bin-shelf-title-div {
+  background-color: #D34735;
+  padding-left:  15px;
+  padding-right: 23px;
+  cursor: pointer;
+}
+
+h1.bin-shelf-title {
+  padding-top: 4px;
+}
+
+h1.bin-title {
+  padding-left:  15px;
+  padding-right:  15px;
+  color: white;
+  font-family: 'Open Sans', sans-serif;
+  padding-top: 4px;
+  padding-bottom:  15px;
+}
+
+.add-inventory {
+  background-color:  #40F99B;
+  width: 60%;
+  margin: auto;
+  color: black;
+  font-family: 'Open Sans', sans-serif;
+  border-radius: 24px;
+  cursor: pointer;
+}
+
+input.edit-mode-input::placeholder {
+  color: black;
+  font-family: 'Open Sans', sans-serif;
+}
+
+
+.small-button {
+  width: 20%
+}
+
+.small-button-title {
+  background-color: #D8D8D8;
+  border-radius: 6px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  cursor: pointer;
+}
+
+#save-button-title {
+  background-color: #40F99B;
+}
+
+h2.add-inventory-title {
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+input {
+  border: 1px solid #FFB8AF;
+  border-radius: 3px;
+  font-size:  32px;
+  width: 100%;
+  padding: 5px;
+}
+
+p.name-title {
+  margin-bottom: 2px;
+  text-align: left;
+}
+
+p.price-title {
+  margin-bottom: 2px;
+  text-align: left;
+}
+
+
+input:focus {
+  border: 3px solid #AB2A19;
+  outline-width: 0px;
+}
+
+img.business-image {
+  max-width: 200px;
+}
+
+.edit-save-delete-buttons {
+  display: flex;
+  justify-content:  space-evenly;
+}
+
+.new-bin-body {
+  box-sizing:  border-box;
+}
+
+.input-div {
+  width: 60%;
+  margin: auto;
+  min-width: 300px;
+}
+
