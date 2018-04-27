@@ -29,10 +29,12 @@ class Bin extends Component {
             binId: this.props.match.params.id.substr(1, 1)
         })
             axios
-            .get(`//localhost:8000/api/bin/${ this.props.match.params.id }`)
+            .get(`//localhost:4000/api/bin/${ this.props.match.params.id }`)
             .then(res => {
                 this.setState({
-                    bin: res.data
+                    bin: res.data,
+                    name: res.data.name,
+                    price: res.data.price
                 })
             })
     }
@@ -100,7 +102,7 @@ class Bin extends Component {
 
     clickOnSave() {
         axios
-        .put(`//localhost:8000/api/bin/${ this.state.id }`, {
+        .put(`//localhost:4000/api/bin/${ this.state.id }`, {
             name: this.state.name,
             binId: this.state.binId,
             id: this.state.id,
@@ -114,7 +116,7 @@ class Bin extends Component {
                 editMode: [false]
             })
             axios
-            .get(`//localhost:8000/api/bin/${ this.props.match.params.id }`)
+            .get(`//localhost:4000/api/bin/${ this.props.match.params.id }`)
             .then(res => {
                 this.setState({
                     bin: res.data
@@ -126,7 +128,7 @@ class Bin extends Component {
 
     clickOnDelete() {
         axios
-        .delete(`//localhost:8000/api/bin/${ this.state.id }`)
+        .delete(`//localhost:4000/api/bin/${ this.state.id }`)
         .then(res => {
             this.props.history.push(`/bins/${this.state.shelfId}`);
         })

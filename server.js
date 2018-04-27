@@ -6,6 +6,8 @@ require('dotenv').config();
 
 const app = express();
 
+app.use(express.static('./client/build'));
+
 massive(process.env.MASSIVE_IRL)
     .then(dbInstance => {
         console.log('Database has been connected. Woohoo!') || app.set('db', dbInstance);
@@ -29,8 +31,10 @@ app.get('/api/shelf/:id', (req, res) => {
                     bins.splice((dbBins[i].id - 1), 1, dbBins[i]);
                 }
             }
-            res.send(bins);
-        });
+            res.status = 200;
+            res.status(200).send(bins);
+        })
+        .catch(handleDbError(res));
 });
 
 app.get('/api/bin/:id', (req, res) => {
@@ -42,17 +46,18 @@ app.get('/api/bin/:id', (req, res) => {
 
     db[shelf].findOne({ id: binId })
         .then(binProperties => {
-            res.send(binProperties);
-        });
+            res.status(200).send(binProperties);
+        })
+        .catch(handleDbError(res));
 });
 
 app.put('/api/bin/:id', (req, res) => {
     const db = app.get('db');
     const putBin = {
-        id: req.body.binId,
+        id: parseInt(req.body.binId, 10),
         bin_num: 'Bin ' + req.body.binId, 
         name: req.body.name,
-        price: req.body.price
+        price: parseInt(req.body.price, 10)
     };
     const idFromFrontEnd = req.params.id;
     const shelfId = idFromFrontEnd.substr(0, 1).toLowerCase();
@@ -60,8 +65,9 @@ app.put('/api/bin/:id', (req, res) => {
     const shelf = `shelf_${ shelfId }`;
     db[shelf].save(putBin)
         .then(newBin => {
-            res.send(newBin);
-        });
+            res.status(200).send(newBin);
+        })
+        .catch(handleDbError(res));
 });
 
 app.delete('/api/bin/:id', (req, res) => {
@@ -78,16 +84,17 @@ app.delete('/api/bin/:id', (req, res) => {
             return db[shelf].destroy({ id: binId });
         })
         .then(() => {
-            res.send(bin);
-        });
+            res.status(200).send(bin);
+        })
+        .catch(handleDbError(res));
 });
 app.post('/api/bin/:id', (req, res) => {
     const db = app.get('db');
     const postBin = {
-        id: req.body.binId,
+        id: parseInt(req.body.binId, 10),
         bin_num: 'Bin ' + req.body.binId, 
         name: req.body.name,
-        price: req.body.price
+        price: parseInt(req.body.price, 10)
     };
     const idFromFrontEnd = req.params.id;
     const shelfId = idFromFrontEnd.substr(0, 1).toLowerCase();
@@ -96,9 +103,25 @@ app.post('/api/bin/:id', (req, res) => {
     const binIndex = binId - 1;
     db[shelf].insert(postBin)
         .then(newBin => {
-            res.send(newBin);
-        });
+            res.status(200).send(newBin);
+        })
+        .catch(handleDbError(res));
 });
 
-const port = process.env.PORT;
+const port = process.env.PORT || 4000 ;
 app.listen(port, ()=>{console.log(`Listening on port ${port}`)});
+
+function handleDbError(res) {
+    return (err) => {
+        console.warn('hit a snag');
+        console.error(err);
+        
+        if (err.code == 'ECONNRESET') {
+            return res.status(500).send({ message: 'something died again' });
+        }
+        if (err.code == '22P02') {
+            res.status(422).send({ message: 'The request had incorrect or missing properties: ' + err.message });
+        }
+        res.status(500).send({ message: 'Internal Server Error' })
+    };
+}

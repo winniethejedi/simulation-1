@@ -6,6 +6,7 @@
     "dotenv": "^5.0.1",
     "express": "^4.16.2",
     "massive": "^4.7.0",
+    "npm": "^6.0.0",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.2.2",
     "redux": "^3.7.2",

@@ -28,10 +28,10 @@ class Bin extends Component {
             binId: this.props.match.params.id.substr(1, 1)
         })
             axios
-            .get(`//localhost:8000/api/bin/${ this.props.match.params.id }`)
+            .get(`//localhost:4000/api/bin/${ this.props.match.params.id }`)
             .then(res => {
                 this.setState({
-                    bin: res.data
+                    bin: res.data,
                 })
             })
     }
@@ -65,7 +65,7 @@ class Bin extends Component {
 
     clickOnAdd() {
         axios
-            .post(`//localhost:8000/api/bin/${ this.state.id }`, {
+            .post(`//localhost:4000/api/bin/${ this.state.id }`, {
                 name: this.state.name,
                 binId: this.state.binId,
                 id: this.state.id,

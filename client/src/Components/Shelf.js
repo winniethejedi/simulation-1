@@ -30,7 +30,7 @@ class Shelf extends Component {
             deletedBin: this.props.deletedBin
         })
             axios
-            .get(`//localhost:8000/api/shelf/${ this.props.match.params.id }`)
+            .get(`//localhost:4000/api/shelf/${ this.props.match.params.id }`)
             .then(res => {
                 this.setState({
                     bins: res.data,
